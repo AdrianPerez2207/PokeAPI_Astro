@@ -21,7 +21,7 @@ const {url} = Astro.props;
 
 const id = url.split("/").at(-2);
 const audioSrc = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`;
-const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 ---
 
 <MainLayout title={`Pokémon - #${id} ${name}`}
@@ -53,10 +53,11 @@ const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
 
 
 <script>
-    interface FavoritePokemon{
+    import type {FavoritePokemon} from "@interfaces/favorite-pokemon";
+    /*interface FavoritePokemon{
         name: string;
         id: number;
-    }
+    }*/
 
     const handlePageLoad = () => {
 
@@ -74,7 +75,7 @@ const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
         const heartOutline = btnFavorite.querySelector("[data-outline]")  as HTMLElement;
         const heartFull = btnFavorite.querySelector("[data-full]")  as HTMLElement;
 
-        //Hacer función para mostrar u ocultar  el corazón lleno
+        //Hacer función para mostrar u ocultar el corazón lleno
         const showHeart = () => {
             if (isFavorite){
                 heartOutline.classList.add("hidden");
